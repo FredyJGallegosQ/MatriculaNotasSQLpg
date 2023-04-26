@@ -36,8 +36,9 @@ CREATE TABLE IF NOT EXISTS public."Teacher"
 CREATE TABLE IF NOT EXISTS public."Semester"
 (
     "IdSemester" serial PRIMARY KEY,
-    "IdEP" integer NOT NULL,
-    "IdCourse" integer NOT NULL
+    "Name" character(20) NOT NULL,
+    "InitDate" date NOT NULL,
+    "EndDate" date NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."PS"
