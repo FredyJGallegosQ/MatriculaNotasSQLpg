@@ -5,7 +5,7 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public."Student"
 (
-    "IdStudent" serial NOT NULL,
+    "IdStudent" serial PRIMARY KEY,
     "Name" character(20) NOT NULL,
     "LastName" character(20) NOT NULL,
     "Age" integer NOT NULL,
@@ -14,21 +14,21 @@ CREATE TABLE IF NOT EXISTS public."Student"
 
 CREATE TABLE IF NOT EXISTS public."Course"
 (
-    "IdCourse" serial NOT NULL,
+    "IdCourse" serial PRIMARY KEY,,
     "Name" character(30) NOT NULL
 	UNIQUE "Name"
 );
 
 CREATE TABLE IF NOT EXISTS public."TeacherCourse"
 (
-    "IdTeacherCourse" serial NOT NULL,
+    "IdTeacherCourse" serial PRIMARY KEY,
     "IdTeacher" integer NOT NULL,
     "IdCourse" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Teacher"
 (
-    "IdTeacher" serial NOT NULL,
+    "IdTeacher" serial PRIMARY KEY,
     "Name" character(20) NOT NULL,
     "LastName" character(20) NOT NULL,
     "Email" character varying(20)
@@ -36,27 +36,27 @@ CREATE TABLE IF NOT EXISTS public."Teacher"
 
 CREATE TABLE IF NOT EXISTS public."Semester"
 (
-    "IdSemester" serial NOT NULL,
+    "IdSemester" serial PRIMARY KEY,
     "IdEP" integer NOT NULL,
     "IdCourse" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."PS"
 (
-    "IdPS" serial NOT NULL,
+    "IdPS" serial PRIMARY KEY,
     "Name" character(20) NOT NULL,
     "IdFacultad" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Facultad"
 (
-    "IdFacultad" serial NOT NULL,
+    "IdFacultad" serial PRIMARY KEY,
     "Name" character(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Registration"
 (
-    "IdRegistration" serial NOT NULL,
+    "IdRegistration" serial PRIMARY KEY,
     "IdStudent" integer NOT NULL,
     "IdSemester" integer NOT NULL,
     "IdPS" integer NOT NULL,
@@ -65,20 +65,21 @@ CREATE TABLE IF NOT EXISTS public."Registration"
 
 CREATE TABLE IF NOT EXISTS public."CourseRegistration"
 (
+	"IdCourseRegistration" serial PRIMARY KEY,
     "IdRegistration" integer NOT NULL,
     "IdCourse" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Chapter"
 (
-    "IdChapter" serial NOT NULL,
+    "IdChapter" serial PRIMARY KEY,
     "Name" character(20) NOT NULL,
     "IdCourse" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Exam"
 (
-    "IdExam" serial NOT NULL,
+    "IdExam" serial PRIMARY KEY,
     "Date" date NOT NULL,
     "Score" numeric(2) NOT NULL,
     "IdChapter" integer NOT NULL
@@ -86,13 +87,14 @@ CREATE TABLE IF NOT EXISTS public."Exam"
 
 CREATE TABLE IF NOT EXISTS public."Question"
 (
-    "IdQuestion" serial NOT NULL,
+    "IdQuestion" serial PRIMARY KEY,
     "Question" character(100) NOT NULL,
     "IdExam" integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS public."Alternatives"
 (
+	"IdAlternatives" serial PRIMARY KEY,
     "Alternative1" character(20) NOT NULL,
     "Alternative2" character(20) NOT NULL,
     "Alternative3" character(20) NOT NULL,
@@ -104,6 +106,7 @@ CREATE TABLE IF NOT EXISTS public."Alternatives"
 
 CREATE TABLE IF NOT EXISTS public."Answer"
 (
+	"IdAnswer" serial PRIMARY KEY,
     "IdQuestion" integer NOT NULL,
     "Answer" character(20) NOT NULL
 );
